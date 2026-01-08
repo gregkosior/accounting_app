@@ -8,4 +8,8 @@ dist/
 *.toc
 *.pkg
 *.xlsx
-*.html
+
+# Nie ignoruj katalogu data/ i data/uploads/, aby były śledzone przez git
+!data/
+!data/uploads/
+
