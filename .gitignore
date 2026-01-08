@@ -1,0 +1,11 @@
+# Ignoruj pliki binarne, buildy i cache
+*.pyc
+__pycache__/
+build/
+dist/
+*.exe
+*.zip
+*.toc
+*.pkg
+*.xlsx
+*.html

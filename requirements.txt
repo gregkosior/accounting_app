@@ -1,0 +1,8 @@
+flask
+pandas
+matplotlib
+plotly
+pywebview
+pyinstaller
+openpyxl
+fpdf

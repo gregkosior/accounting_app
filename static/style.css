@@ -1,0 +1,133 @@
+/* Kafelki na stronie głównej */
+.tiles-container {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin: 2em 0;
+}
+.tile {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 2em 1.5em;
+    width: 220px;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.tile:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.16);
+    transform: translateY(-4px) scale(1.03);
+}
+.tile a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.tile-icon {
+    font-size: 2.8em;
+    margin-bottom: 0.5em;
+}
+.tile-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+}
+.tile-desc {
+    font-size: 0.98em;
+    color: #555;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+    color: #222;
+    font-size: 18px;
+    line-height: 1.7;
+}
+nav {
+    background: #2d3e50;
+    padding: 1em 2em;
+    margin-bottom: 2em;
+}
+nav a {
+    color: #fff;
+    margin-right: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+nav a:hover {
+    color: #ffd700;
+}
+h2, h3 {
+    color: #1a2533;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.5px;
+}
+table {
+    border-collapse: collapse;
+    margin-top: 18px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+th {
+    background: #2d3e50;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 1em;
+    text-align: left;
+}
+td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.98em;
+}
+tr:nth-child(even) {
+    background: #f6f8fa;
+}
+ul, ol {
+    margin-left: 2em;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    z-index: 100;
+    right: 0;
+    border-radius: 6px;
+    margin-top: 4px;
+    overflow: hidden;
+    animation: fadeIn 0.2s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    border: none;
+    padding: 0.6em 1.4em;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    transition: background 0.2s;
+}
+button:hover, input[type="submit"]:hover {
+    background: #1a2533;
+}
+form label {
+    font-weight: 500;
+    margin-right: 0.5em;
+}
+.flash {
+    background: #ffd700;
+    color: #222;
+    padding: 0.7em 1em;
+    border-radius: 4px;
+    margin: 1em 0;
+    font-weight: 500;
+}

@@ -1,0 +1,109 @@
+---
+Data: 2026-01-07 23:16:07
+Plik: kursy_z_wykresem.xlsx
+Liczba transakcji: 32
+
+---
+Data: 2026-01-07 23:16:21
+Plik: kursy_z_wykresem.xlsx
+Liczba transakcji: 32
+
+---
+Data: 2026-01-07 23:17:49
+Plik: Podszumowanie_Aplikacji.xlsx
+Liczba transakcji: 46
+
+---
+Data: 2026-01-07 23:20:09
+Plik: kursy_z_wykresem.xlsx
+Liczba transakcji: 32
+
+---
+Data: 2026-01-08 16:30:58
+Plik: kursy_z_wykresem.xlsx
+Filtr: month = None
+Liczba transakcji: 32
+
+---
+Data: 2026-01-08 16:31:06
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: month = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 16:31:23
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: month = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 16:31:31
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: month = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 16:36:09
+Plik: kursy_z_wykresem.xlsx
+Filtr: all = None
+Liczba transakcji: 32
+
+---
+Data: 2026-01-08 16:36:16
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: all = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 16:36:25
+Plik: kursy_z_wykresem.xlsx
+Filtr: all = None
+Liczba transakcji: 32
+
+---
+Data: 2026-01-08 16:36:28
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: all = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 16:36:34
+Plik: kursy_z_wykresem.xlsx
+Filtr: all = None
+Liczba transakcji: 32
+
+---
+Data: 2026-01-08 16:44:10
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: all = None
+Liczba transakcji: 46
+
+---
+Data: 2026-01-08 17:07:54
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: all = None
+---
+Data: 2026-01-08 19:54:25
+Plik: Podszumowanie_Aplikacji.xlsx
+Filtr: all = None
+
+---
+Data: 2026-01-08 19:55:31
+Plik: kursy_z_wykresem.xlsx
+Filtr: all = None
+
+---
+Data: 2026-01-08 19:56:34
+Plik: account-statement_2025-06-01_2025-12-31_pl-pl_e13483.xlsx
+Filtr: all = None
+
+---
+Data: 2026-01-08 19:57:16
+Plik: account-statement_2025-06-01_2025-12-31_pl-pl_e13483.xlsx
+Filtr: all = None
+
+---
+Data: 2026-01-08 19:57:25
+Plik: account-statement_2025-06-01_2025-12-31_pl-pl_e13483.xlsx
+Filtr: all = None
+
