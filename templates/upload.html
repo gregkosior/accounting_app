@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Wgraj plik CSV lub XLSX</h2>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv,.xlsx">
+    <button type="submit">Wyślij</button>
+</form>
+{% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+{% endfor %}
+{% endblock %}

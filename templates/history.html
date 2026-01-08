@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Historia analiz</h2>
+{% if entries %}
+    <ul>
+    {% for entry in entries %}
+        <li>
+            <a href="{{ url_for('history.history_detail', idx=loop.index0) }}">
+                <strong>{{ entry.date }}</strong> | Plik: {{ entry.file }}
+            </a>
+            <ul>
+            {% for key, value in entry.items() %}
+                {% if key not in ['date', 'file'] %}
+                <li>{{ key }}: {{ value }}</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak zapisanych analiz.</p>
+{% endif %}
+{% endblock %}

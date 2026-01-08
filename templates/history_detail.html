@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Szczegóły analizy</h2>
+<ul>
+    <li><strong>Data:</strong> {{ entry.date }}</li>
+    <li><strong>Plik:</strong> {{ entry.file }}</li>
+    {% for key, value in entry.items() %}
+        {% if key not in ['date', 'file'] %}
+        <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<a href="{{ url_for('history.history') }}">&larr; Powrót do historii</a>
+{% endblock %}

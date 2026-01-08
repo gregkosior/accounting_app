@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Analiza finansowa</h2>
+<form method="post" style="margin-bottom: 1em;">
+    <label for="file_path">Wybierz plik:</label>
+    <select name="file_path" id="file_path">
+        {% for file in files %}
+            <option value="{{ file }}" {% if file == selected_file %}selected{% endif %}>{{ file }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <label for="filter_type">Zakres analizy:</label>
+    <select name="filter_type" id="filter_type" onchange="onFilterTypeChange()">
+        <option value="all" {% if filter_type == 'all' or not filter_type %}selected{% endif %}>Całość</option>
+        <option value="month" {% if filter_type == 'month' %}selected{% endif %}>Wybrany miesiąc</option>
+        <option value="day" {% if filter_type == 'day' %}selected{% endif %}>Wybrany dzień</option>
+    </select>
+    <span id="filter_value_container">
+        {% if filter_type == 'month' %}
+            <select name="filter_value" id="filter_value">
+                {% for m in available_months %}
+                    <option value="{{ m }}" {% if filter_value == m %}selected{% endif %}>{{ m }}</option>
+                {% endfor %}
+            </select>
+        {% elif filter_type == 'day' %}
+            <select name="filter_value" id="filter_value">
+                {% for d in available_days %}
+                    <option value="{{ d }}" {% if filter_value == d %}selected{% endif %}>{{ d }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+    </span>
+    <button type="submit">Analizuj</button>
+</form>
+<form method="post" action="/analysis/export/pdf" style="display:inline;">
+    <input type="hidden" name="file_path" value="{{ selected_file }}">
+    <input type="hidden" name="filter_type" value="{{ filter_type }}">
+    <input type="hidden" name="filter_value" value="{{ filter_value }}">
+    <button type="submit">Eksportuj do PDF</button>
+</form>
+<form method="post" action="/analysis/export/excel" style="display:inline;">
+    <input type="hidden" name="file_path" value="{{ selected_file }}">
+    <input type="hidden" name="filter_type" value="{{ filter_type }}">
+    <input type="hidden" name="filter_value" value="{{ filter_value }}">
+    <button type="submit">Eksportuj do Excel</button>
+</form>
+<script>
+function onFilterTypeChange() {
+    var type = document.getElementById('filter_type').value;
+    var form = document.querySelector('form');
+    form.submit();
+}
+</script>
+{% if results %}
+    <h3>Podsumowanie KPI:</h3>
+    <ul>
+    {% for key, value in results.items() %}
+        <li><b>{{ key }}</b>: {{ value }}</li>
+    {% endfor %}
+    </ul>
+    {% if analysis_results and analysis_results.trend %}
+        <h4>Trend:</h4>
+        <ul>
+        {% for key, value in analysis_results.trend.items() %}
+            <li>{{ key }}: {{ value }}%</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if analysis_results and analysis_results.category_analysis is not none %}
+        <h4>Analiza wg kategorii:</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                {% for col in analysis_results.category_analysis.columns %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in analysis_results.category_analysis.values.tolist() %}
+                <tr>
+                {% for cell in row %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endif %}
+{% if df is not none %}
+    <h3>Dane źródłowe:</h3>
+    <table border="1">
+        <thead>
+            <tr>
+            {% for col in df.columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in df.values.tolist() %}
+            <tr>
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% if chart_income %}
+    <h3>Wykres przychodów/kosztów w czasie:</h3>
+    <img src="/{{ chart_income }}" alt="Wykres liniowy">
+{% endif %}
+{% if chart_balance %}
+    <h3>Wykres salda miesięcznego:</h3>
+    <img src="/{{ chart_balance }}" alt="Wykres słupkowy">
+{% endif %}
+{% endblock %}

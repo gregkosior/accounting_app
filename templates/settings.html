@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ustawienia aplikacji</h2>
+<form class="settings-form">
+    <!-- 1. Ustawienia analizy -->
+    <fieldset>
+        <legend>🔹 1. Ustawienia analizy</legend>
+        <label><input type="checkbox" name="auto_columns"> Automatycznie wykrywaj kolumny (income / expense)</label>
+        <div class="desc">Automatycznie wykrywa kolumny przychody/koszty na podstawie nazw</div>
+        <br>
+        <label><input type="checkbox" name="ignore_empty"> Ignoruj puste wiersze</label>
+        <div class="desc">Pomija wiersze bez danych, by raport był czytelniejszy</div>
+        <br>
+        <label><input type="checkbox" name="round_2"> Zaokrąglaj wartości do 2 miejsc</label><br>
+        <label><input type="checkbox" name="neg_as_expense"> Traktuj wartości ujemne jako koszty</label>
+        <div class="desc">Wartości ujemne są traktowane jako koszty automatycznie</div>
+        <br>
+        <label>Sumuj dane:</label>
+        <select name="sum_period">
+            <option value="day">dziennie</option>
+            <option value="week">tygodniowo</option>
+            <option value="month">miesięcznie</option>
+        </select>
+    </fieldset>
+
+    <!-- 2. Ustawienia plików -->
+    <fieldset>
+        <legend>🔹 2. Ustawienia plików</legend>
+        <label>Domyślny format eksportu:</label><br>
+        <label><input type="radio" name="export_format" value="excel"> Excel</label>
+        <label><input type="radio" name="export_format" value="pdf"> PDF</label>
+        <label><input type="radio" name="export_format" value="both"> Excel + PDF</label><br>
+        <label>Separator CSV:</label>
+        <select name="csv_sep">
+            <option value=",">,</option>
+            <option value=";">;</option>
+            <option value="|">|</option>
+        </select>
+        <label>Kodowanie plików:</label>
+        <select name="encoding">
+            <option value="utf-8">UTF-8</option>
+            <option value="windows-1250">Windows-1250</option>
+        </select>
+    </fieldset>
+
+    <!-- 3. Ustawienia wizualizacji -->
+    <fieldset>
+        <legend>🔹 3. Ustawienia wizualizacji</legend>
+        <label>Typ domyślnego wykresu:</label>
+        <select name="chart_type">
+            <option value="line">liniowy</option>
+            <option value="bar">słupkowy</option>
+            <option value="area">kumulacyjny</option>
+        </select>
+        <label>Kolorystyka:</label>
+        <select name="theme">
+            <option value="light">jasna</option>
+            <option value="dark">ciemna</option>
+        </select>
+        <label><input type="checkbox" name="show_values"> Pokazuj wartości nad wykresami</label>
+    </fieldset>
+
+    <!-- 4. Ustawienia aplikacji -->
+    <fieldset>
+        <legend>🔹 4. Ustawienia aplikacji</legend>
+        <label>Język:</label>
+        <select name="lang">
+            <option value="pl">Polski</option>
+            <option value="en">English</option>
+        </select>
+        <label>Tryb aplikacji:</label>
+        <select name="mode">
+            <option value="prod">Produkcyjny</option>
+            <option value="test">Testowy (logi, debug)</option>
+            <option value="demo">Demo (dla rekrutera)</option>
+        </select>
+        <label><input type="checkbox" name="auto_history"> Automatyczne zapisywanie historii analiz</label><br>
+        <label>Maksymalna liczba analiz w historii: <input type="number" name="max_history" value="50" min="1" max="999"></label>
+    </fieldset>
+
+    <!-- 5. Informacje systemowe -->
+    <fieldset disabled>
+        <legend>🔹 5. Informacje systemowe</legend>
+        <div>Nazwa aplikacji: <b>Accounting App</b></div>
+        <div>Wersja: <b>v1.0.0</b></div>
+        <div>Autor: <b>Grzegorz Kosior</b></div>
+        <div>Technologia: Python, Flask, Pandas</div>
+        <div>Status: Lokalna, Desktop (w planach), Mobile (w planach)</div>
+        <div style="margin-top:0.7em; color:#555; font-size:0.98em;">Aplikacja w pod dalsza rozbudowę w przyszłości.</div>
+    </fieldset>
+
+    <!-- 6. Bezpieczeństwo -->
+    <fieldset>
+        <legend>🔹 6. Bezpieczeństwo</legend>
+        <label><input type="checkbox" name="no_save"> Nie zapisuj plików po analizie</label><br>
+        <label><input type="checkbox" name="clean_on_exit"> Czyść dane po zamknięciu aplikacji</label><br>
+        <label><input type="checkbox" name="local_only"> Pracuj tylko lokalnie (bez wysyłania do sieci)</label>
+    </fieldset>
+
+    <br>
+    <button type="submit" class="save-btn" disabled>🛠️ Zapisz ustawienia (wkrótce)</button>
+    <button type="button" class="reset-btn" onclick="alert('Przywrócono domyślne ustawienia!')">🔄 Przywróć domyślne</button>
+</form>
+<style>
+.settings-form { max-width: 600px; margin: 2em auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2em 2.5em; }
+.settings-form fieldset { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 1.5em; padding: 1em 1.5em; }
+.settings-form legend { font-weight: 600; color: #1a2533; font-size: 1.1em; letter-spacing: 0.5px; }
+.settings-form label { display: block; margin: 0.4em 0 0.2em 0; font-weight: 500; }
+.settings-form input[type="checkbox"] { margin-right: 0.5em; }
+.settings-form input[type="number"] { width: 60px; margin-left: 0.5em; }
+.settings-form button { margin-top: 1em; }
+.settings-form select { margin-left: 0.5em; }
+.settings-form [disabled] { opacity: 0.7; }
+</style>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Asystent analizy</h2>
+<form method="post">
+    <input type="hidden" name="step" value="{{ step }}">
+    {% if step == 1 %}
+        <label>Wybierz plik do analizy:</label>
+        <select name="file_path" required>
+            <option value="">-- wybierz plik --</option>
+            {% for file in files %}
+                <option value="{{ file }}" {% if file == selected_file %}selected{% endif %}>{{ file }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Dalej</button>
+    {% elif step == 2 %}
+        <label>Zakres analizy:</label>
+        <select name="filter_type" id="filter_type" required onchange="this.form.submit()">
+            <option value="all" {% if filter_type == 'all' %}selected{% endif %}>Całość</option>
+            <option value="month" {% if filter_type == 'month' %}selected{% endif %}>Wybrany miesiąc</option>
+            <option value="day" {% if filter_type == 'day' %}selected{% endif %}>Wybrany dzień</option>
+        </select>
+        {% if filter_type == 'month' %}
+            <select name="filter_value" required>
+                {% for m in available_months %}
+                    <option value="{{ m }}" {% if filter_value == m %}selected{% endif %}>{{ m }}</option>
+                {% endfor %}
+            </select>
+        {% elif filter_type == 'day' %}
+            <select name="filter_value" required>
+                {% for d in available_days %}
+                    <option value="{{ d }}" {% if filter_value == d %}selected{% endif %}>{{ d }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+        <button type="submit">Dalej</button>
+    {% elif step == 3 %}
+        <label>Typ raportu:</label>
+        <select name="report_type" required>
+            <option value="summary" {% if report_type == 'summary' %}selected{% endif %}>Podsumowanie</option>
+            <option value="full" {% if report_type == 'full' %}selected{% endif %}>Pełny raport</option>
+        </select>
+        <button type="submit">Analizuj</button>
+    {% elif step == 4 %}
+        <h3>Wyniki analizy:</h3>
+        <ul>
+        {% for key, value in results.items() %}
+            <li><b>{{ key }}</b>: {{ value }}</li>
+        {% endfor %}
+        </ul>
+        <p>{{ message }}</p>
+        <button name="export_pdf" value="1">Eksportuj PDF</button>
+        <button name="export_excel" value="1">Eksportuj Excel</button>
+        <button name="restart" value="1">Nowa analiza</button>
+    {% endif %}
+</form>
+{% endblock %}

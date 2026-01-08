@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Witaj w aplikacji księgowej!</h2>
+<div class="tiles-container">
+	<div class="tile">
+		<a href="{{ url_for('upload.upload') }}">
+			<div class="tile-icon">📁</div>
+			<div class="tile-title">Wgraj plik</div>
+			<div class="tile-desc">Dodaj plik z danymi finansowymi</div>
+		</a>
+	</div>
+	<div class="tile">
+		<a href="{{ url_for('analysis.analysis') }}">
+			<div class="tile-icon">📊</div>
+			<div class="tile-title">Przeanalizuj dane</div>
+			<div class="tile-desc">Uruchom analizę finansową</div>
+		</a>
+	</div>
+	<div class="tile">
+		<a href="{{ url_for('analysis.analysis') }}#charts">
+			<div class="tile-icon">📈</div>
+			<div class="tile-title">Wygeneruj wykres</div>
+			<div class="tile-desc">Zobacz wizualizacje danych</div>
+		</a>
+	</div>
+</div>
+{% endblock %}

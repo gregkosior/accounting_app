@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja księgowa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('main.index') }}">Strona główna</a>
+        <a href="{{ url_for('upload.upload') }}">Wgraj plik</a>
+        <a href="{{ url_for('analysis.analysis') }}">Analiza</a>
+        <a href="{{ url_for('agent.agent') }}">Asystent</a>
+        <a href="{{ url_for('history.history') }}">Historia analiz</a>
+        <a href="{{ url_for('settings.settings') }}" class="dropbtn">Ustawienia</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+    <script>
+    function toggleDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var content = document.getElementById('settingsDropdownContent');
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    }
+    // Zamknij dropdown po kliknięciu poza nim
+    document.addEventListener('click', function(event) {
+        var dropdown = document.getElementById('settingsDropdown');
+        var content = document.getElementById('settingsDropdownContent');
+        if (content && !dropdown.contains(event.target)) {
+            content.style.display = 'none';
+        }
+    });
+    </script>
+</body>
+</html>
